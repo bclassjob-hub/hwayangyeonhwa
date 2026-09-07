@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover" />
+<meta name="format-detection" content="telephone=no" />
+<title>MY 花樣年華 TEST</title>
+<style>
+  :root{
+    --bg:#fffaf6; --card:#ffffff; --ink:#2d2a2a; --sub:#746c68;
+    --line:#eadfd8; --accent:#b85f68; --soft:#f7ece6;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{min-height:100%}
+  body{
+    margin:0; background:linear-gradient(180deg,#fffaf6 0%,#f8f0ea 100%);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Noto Sans KR","Segoe UI",sans-serif;
+    -webkit-text-size-adjust:100%;
+  }
+  button,input{font:inherit}
+  button{touch-action:manipulation;-webkit-appearance:none;appearance:none}
+  .wrap{max-width:760px;margin:0 auto;min-height:100vh;padding:22px 16px 48px}
+  .panel{
+    background:rgba(255,255,255,.96); border:1px solid var(--line); border-radius:24px;
+    box-shadow:0 12px 35px rgba(74,48,38,.08); padding:24px;
+  }
+  .center{text-align:center}
+  .eyebrow{font-size:13px;letter-spacing:.12em;color:var(--accent);font-weight:800}
+  h1{font-size:34px;line-height:1.14;margin:10px 0 8px}
+  h2{font-size:25px;line-height:1.35;margin:8px 0 18px}
+  p{line-height:1.65;color:var(--sub);margin:8px 0}
+  .hero-mark{font-family:Georgia,"Times New Roman",serif;font-size:52px;letter-spacing:.08em;color:#7b3941;margin:8px 0}
+  .btn{
+    display:block;width:100%;border:0;border-radius:16px;padding:16px 18px;font-size:17px;
+    font-weight:800;cursor:pointer;margin-top:14px;min-height:54px;
+  }
+  .btn.primary{background:var(--ink);color:white}
+  .btn.soft{background:var(--soft);color:#6a4a43}
+  .btn.outline{background:white;border:1px solid var(--line);color:var(--ink)}
+  .privacy{font-size:12px;color:#928782;margin-top:18px;line-height:1.55}
+  .hidden{display:none !important}
+  .topline{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:12px}
+  .progress{height:8px;border-radius:999px;background:#eee4df;overflow:hidden;margin:12px 0 24px}
+  .bar{height:100%;width:0;background:linear-gradient(90deg,#a54f59,#d6a25f);transition:width .2s ease}
+  .qno{font-size:13px;color:var(--accent);font-weight:900}
+  .question{font-size:24px;font-weight:850;line-height:1.38;margin:8px 0 18px}
+  .choices{display:grid;gap:12px}
+  .choice{
+    width:100%;text-align:left;border:1px solid var(--line);background:white;border-radius:18px;padding:16px;
+    font-size:16px;line-height:1.48;color:var(--ink);cursor:pointer;min-height:62px;
+  }
+  .choice:active{transform:scale(.99);background:#fff9f5}
+  .choice .letter{
+    display:inline-flex;width:28px;height:28px;border-radius:50%;align-items:center;justify-content:center;
+    background:#f5ebe6;margin-right:8px;font-weight:900;color:#754f47;
+  }
+  .namebox{
+    width:100%;font-size:20px;padding:16px;border:1px solid var(--line);border-radius:16px;outline:none;margin-top:8px;
+    -webkit-appearance:none;appearance:none;background:white;color:var(--ink);
+  }
+  .result-title{font-size:13px;color:var(--accent);font-weight:900;letter-spacing:.1em}
+  .type-name{font-size:31px;font-weight:900;margin:8px 0}
+  .type-desc{font-size:17px;line-height:1.7;color:#4f4946}
+  .scoregrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:18px 0}
+  .scorebox{background:#faf4f0;border:1px solid #efe3dd;border-radius:14px;padding:12px 6px;text-align:center}
+  .scorebox b{display:block;font-size:20px}
+  .scorebox span{font-size:12px;color:#83756f}
+  .reco{background:#fffaf6;border:1px solid #efe3dd;border-radius:18px;padding:16px;margin:14px 0}
+  .reco h3{margin:0 0 10px;font-size:16px}
+  .reco ul{margin:0;padding-left:20px;color:#514a47;line-height:1.7}
+  .mission{background:#2e2b2a;color:white;border-radius:18px;padding:16px;margin:14px 0}
+  .mission small{display:block;opacity:.72;margin-bottom:6px}
+  .mission b{font-size:18px;line-height:1.5}
+  .closing{
+    margin-top:18px;padding:18px;border-radius:18px;background:#fff7f1;text-align:center;
+    color:#7b3f47;font-weight:800;line-height:1.6
+  }
+  @media (max-width:520px){
+    .panel{padding:20px}
+    h1{font-size:30px}
+    .hero-mark{font-size:44px}
+    .question{font-size:22px}
+    .choice{font-size:15.5px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <section id="start" class="panel center">
+    <div class="eyebrow">2분 대학생활 취향 테스트</div>
+    <div class="hero-mark">花樣年華</div>
+    <h1>MY 화양연화 TEST</h1>
+    <p>나는 어떤 방식으로 대학생활의 우연을 만드는 사람일까?</p>
+    <p><b>16문항 · 4지선다 · 클릭만 하면 끝</b><br>생각 오래 하지 말고, 지금 더 끌리는 쪽을 콕콕 눌러주세요.</p>
+    <button id="startBtn" type="button" class="btn primary">시작하기</button>
+    <div class="privacy">이 테스트는 이름·응답·결과를 저장하거나 수집하지 않습니다.</div>
+  </section>
+
+  <section id="quiz" class="panel hidden">
+    <div class="topline">
+      <div class="qno" id="qno">Q1 / 16</div>
+      <div style="font-size:12px;color:#8d817b">빠르게, 느낌대로!</div>
+    </div>
+    <div class="progress"><div class="bar" id="bar"></div></div>
+    <div class="question" id="question"></div>
+    <div class="choices" id="choices"></div>
+  </section>
+
+  <section id="nameStep" class="panel hidden center">
+    <div class="eyebrow">거의 다 왔습니다</div>
+    <h2>결과에 표시할 이름을 입력해주세요.</h2>
+    <input id="nameInput" class="namebox" maxlength="12" placeholder="예: 신경호" autocomplete="off" />
+    <button id="resultBtn" type="button" class="btn primary">나의 화양연화 보기</button>
+    <div class="privacy">입력한 이름은 결과화면을 만드는 데만 사용되며 저장되지 않습니다.</div>
+  </section>
+
+  <section id="result" class="panel hidden">
+    <div class="result-title">MY 花樣年華</div>
+    <div id="ownerLine" style="margin-top:6px;color:#7b6d67"></div>
+    <div class="type-name" id="typeName"></div>
+    <div class="type-desc" id="typeDesc"></div>
+
+    <div class="scoregrid" id="scoreGrid"></div>
+
+    <div class="reco">
+      <h3>이번 학기, 이런 건 한번쯤 어때요?</h3>
+      <ul id="recoList"></ul>
+    </div>
+
+    <div id="missionBox" class="mission hidden">
+      <small>🎲 나에게 우연 하나 더</small>
+      <b id="missionText"></b>
+    </div>
+
+    <button id="missionBtn" type="button" class="btn soft">🎲 나에게 우연 하나 더</button>
+    <button id="restartBtn" type="button" class="btn outline">처음부터 다시</button>
+
+    <div class="closing">우연이 들어올 자리를 하나 만들어보세요.</div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+"use strict";
+
+const questions = [
+  {q:"갑자기 공강 3시간이 생겼다. 나는?", a:[
+    ["친구에게 “밥 먹을래?” 연락한다","H"],["평소 궁금했던 책·전시·공간을 찾아본다","Y"],["그냥 안 가본 곳으로 한번 가본다","F"],["학교나 근처에서 오늘 하는 행사를 찾아본다","L"]]},
+  {q:"학교 축제에서 가장 끌리는 것은?", a:[
+    ["갑자기 하는 이벤트나 무대에 한번 끼어본다","F"],["친구들과 먹고 떠들며 하루를 즐긴다","H"],["부스나 운영하는 사람들은 뭘 하는지 구경한다","L"],["평소 모르던 공연·전시·체험을 골라본다","Y"]]},
+  {q:"유튜브에서 처음 보는 분야가 이상하게 재미있다.", a:[
+    ["관련 영상을 몇 개 더 찾아본다","Y"],["실제로 이걸 하는 곳이나 사람도 찾아본다","L"],["친구에게 보내면서 같이 이야기해본다","H"],["이번 주에 내가 직접 해볼 방법부터 찾는다","F"]]},
+  {q:"팀플에서 역할을 고를 수 있다면?", a:[
+    ["이 주제와 연결되는 실제 사례나 현장을 찾아본다","L"],["평소 안 해본 역할을 한번 맡아본다","F"],["이번 기회에 새로운 프로그램이나 기술을 배워본다","Y"],["팀원들이 편하게 이야기하도록 분위기를 만든다","H"]]},
+  {q:"방학에 아무 일정 없는 하루가 생겼다.", a:[
+    ["오랜만에 친구에게 연락해본다","H"],["관심 있던 걸 하루 동안 맛보기 해본다","Y"],["계획 없이 기차나 버스를 타고 어디든 가본다","F"],["재미있는 지역행사나 프로그램이 있는지 찾아본다","L"]]},
+  {q:"학교 게시판에서 가장 먼저 눈이 가는 공고는?", a:[
+    ["‘처음 해보는 사람 환영!’ 체험 프로그램","F"],["신입회원 모집 동아리","H"],["지역 봉사·청년 프로젝트","L"],["재미있어 보이는 특강이나 워크숍","Y"]]},
+  {q:"처음 만난 다른 학과 학생과 이야기를 하게 됐다.", a:[
+    ["그 학과에서 뭘 배우는지 궁금해진다","Y"],["그 학과와 연결된 행사나 활동이 있는지 물어본다","L"],["그냥 친해져서 다음에 밥 한번 먹고 싶다","H"],["재미있는 일이 있다면 같이 한번 해보고 싶다","F"]]},
+  {q:"친구가 처음 듣는 장소에 같이 가자고 한다.", a:[
+    ["어떤 곳인지, 왜 만들어졌는지 먼저 찾아본다","L"],["‘뭔진 모르겠지만 가보자!’","F"],["어떤 경험을 할 수 있는 곳인지 알아본다","Y"],["장소보다는 친구랑 같이 가는 게 재미있을 것 같다","H"]]},
+  {q:"AI를 하나 제대로 써본다면 가장 먼저 해보고 싶은 것은?", a:[
+    ["낯선 사람에게 자연스럽게 말 거는 방법 물어보기","H"],["내가 좋아하는 것들의 공통점 찾아보기","Y"],["평소 안 할 것 같은 새로운 경험 추천받기","F"],["내 관심사와 연결되는 행사·기관·활동 찾아보기","L"]]},
+  {q:"교양수업 하나를 마음대로 고를 수 있다.", a:[
+    ["지금까지 한 번도 관심 없던 분야를 일부러 고른다","F"],["친구와 같이 들을 수 있는 재미있는 수업을 고른다","H"],["지역·사회·환경처럼 세상 이야기를 다루는 수업을 고른다","L"],["평소 조금 궁금했던 분야를 제대로 배워본다","Y"]]},
+  {q:"딱 한 달짜리 아르바이트를 해야 한다면?", a:[
+    ["새로운 기술이나 일을 배울 수 있는 곳","Y"],["축제·지역행사처럼 현장을 경험할 수 있는 곳","L"],["다양한 사람을 많이 만날 수 있는 곳","H"],["평소 내가 절대 안 할 것 같은 일을 해본다","F"]]},
+  {q:"뉴스를 보다가 어떤 사회문제가 궁금해졌다.", a:[
+    ["직접 관련된 장소나 행사를 찾아가본다","L"],["고민하기 전에 관련된 체험부터 한번 해본다","F"],["왜 그런 일이 생기는지 자료부터 찾아본다","Y"],["친구나 다른 사람들은 어떻게 생각하는지 물어본다","H"]]},
+  {q:"동아리 박람회에 갔다. 딱 하나만 고른다면?", a:[
+    ["사람들이 재미있어 보이는 동아리","H"],["새로운 것을 배울 수 있는 동아리","Y"],["내가 지금까지 전혀 해본 적 없는 동아리","F"],["봉사·사회·지역활동과 연결되는 동아리","L"]]},
+  {q:"앞으로 한 달 동안 미션 하나를 해야 한다.", a:[
+    ["매주 처음 해보는 것 하나","F"],["새로운 사람 한 명씩 만나보기","H"],["학교 밖 프로그램 하나 찾아가기","L"],["새로운 분야를 하나씩 맛보기","Y"]]},
+  {q:"졸업할 때 가장 많이 남았으면 하는 것은?", a:[
+    ["‘이것저것 배워봤구나’ 하는 경험","Y"],["‘세상이 생각보다 넓었구나’ 하는 경험","L"],["‘좋은 사람들을 많이 만났구나’ 하는 기억","H"],["‘겁났는데 이것도 해봤네’ 하는 기억","F"]]},
+  {q:"내일 갑자기 네 가지 제안이 동시에 들어왔다. 하나만 간다면?", a:[
+    ["지역에서 진행하는 대학생 프로젝트","L"],["당일치기 즉흥 여행","F"],["처음 접하는 분야의 원데이클래스","Y"],["친구가 초대한 처음 보는 사람들의 모임","H"]]}
+];
+
+const labels = {H:"和",Y:"養",L:"連",F:"火"};
+const typeData = {
+  H:{name:"🤝 인연수집가형",desc:"사람을 만나면서 예상하지 못한 길이 열리는 타입입니다. 대화와 관계 속에서 새로운 정보와 기회를 발견하는 편이에요.",reco:["다른 학과 학생과 밥 한 번 먹기","동아리·모임 하나 가볍게 찍먹하기","교수님·선배에게 궁금한 것 하나 물어보기"]},
+  Y:{name:"🌱 호기심탐험가형",desc:"이것저것 배우고 기웃거리다가 ‘어? 이거 재미있는데?’를 발견하는 타입입니다. 진로도 관심사의 흔적을 따라갈 때 더 잘 보일 수 있어요.",reco:["전공 밖 원데이클래스 하나 맛보기","평소 궁금했던 분야 2주만 배워보기","내 관심사를 사진·메모·영상으로 남겨보기"]},
+  L:{name:"🌏 세상접속형",desc:"학교 밖 세상과 연결될수록 하고 싶은 일이 선명해지는 타입입니다. 사람·기관·지역·사회문제를 실제로 접할 때 방향을 발견하는 편이에요.",reco:["학교 밖 청년 프로그램 하나 찾아가기","지역행사·봉사·프로젝트에 한 번 참여하기","궁금한 사회문제 하나 정해 현장과 연결해보기"]},
+  F:{name:"🔥 일단출발형",desc:"고민보다 한 번 해보면서 길을 발견하는 타입입니다. 완벽하게 준비되기보다 ‘일단 시작’했을 때 우연한 기회를 잘 만나는 편이에요.",reco:["안 가본 곳 혼자 한번 가보기","평소 안 할 것 같은 활동 하나 신청하기","이번 학기 ‘처음 해보는 것’ 하나 만들기"]},
+  HY:{name:"☕ 수다탐험형",desc:"사람과 이야기하다가 새로운 관심사가 생기는 타입입니다. 누군가의 이야기 한마디가 다음 경험의 출발점이 되기 쉬워요.",reco:["다른 전공 친구에게 재미있는 수업 물어보기","친구와 같이 생뚱맞은 체험 하나 해보기","관심 있는 선배에게 커피 한 잔 제안하기"]},
+  HL:{name:"🤝🌏 함께움직임형",desc:"혼자보다 사람들과 무언가 할 때 기회가 생기는 타입입니다. 관계가 활동으로, 활동이 다시 새로운 관계로 이어지는 편이에요.",reco:["축제·행사 운영진 한번 해보기","친구와 봉사·지역행사 참여하기","학교 밖 모임에 지인과 함께 가보기"]},
+  HF:{name:"⚡ 번개합류형",desc:"재미있는 사람과 일이 생기면 일단 끼어보는 타입입니다. 예상하지 못한 만남이 새로운 경험으로 번지는 경우가 많아요.",reco:["친구의 낯선 제안에 한 번 ‘콜!’ 해보기","처음 보는 모임 하나 참석하기","즉흥 당일치기 여행 한번 가보기"]},
+  YL:{name:"🔎 질문확장형",desc:"궁금한 것을 파다 보면 자연스럽게 세상과 연결되는 타입입니다. 질문 하나가 수업·사람·기관·진로로 넓어질 가능성이 커요.",reco:["궁금한 사회문제 하나 깊게 찾아보기","관련 기관·프로그램 한 곳 방문하기","관심 분야 사람에게 질문 하나 보내보기"]},
+  YF:{name:"🧪 일단실험형",desc:"배우고 끝내지 않고 직접 한 번 해봐야 직성이 풀리는 타입입니다. 작은 실험이 다음 관심사를 만드는 힘이 됩니다.",reco:["원데이클래스 하나 신청하기","관심 있던 걸 딱 한 달만 해보기","처음 보는 프로그램 하나 실제로 참가하기"]},
+  LF:{name:"🚀 현장돌진형",desc:"학교 밖으로 나가 직접 부딪힐 때 길이 보이는 타입입니다. 현장에 들어가야 궁금증도 커지고 선택지도 넓어져요.",reco:["지역행사·프로젝트 현장 가보기","낯선 단기 알바 한번 경험하기","관심 있는 분야의 행사에 혼자 참석하기"]},
+  BAL:{name:"🌈 잡식청춘형",desc:"사람도, 배움도, 세상도, 도전도 조금씩 맛보는 타입입니다. 하나로 정하기보다 여러 경험을 섞을수록 나다운 길이 보일 수 있어요.",reco:["이번 달 和·養·連·火에서 하나씩 골라보기","평소 가장 적게 해본 영역 하나 시도하기","이번 학기 ‘처음’ 하나를 일부러 만들어보기"]}
+};
+
+const missions = [
+  "학교에서 한 번도 들어가보지 않은 건물에 들어가 10분만 구경하기.",
+  "다른 학과 학생에게 ‘전공에서 제일 재미있는 수업이 뭐예요?’ 물어보기.",
+  "이번 주 학교 게시판에서 처음 보는 모집공고 하나 끝까지 읽어보기.",
+  "평소 내리지 않는 지하철역이나 버스정류장에서 내려 30분 걸어보기.",
+  "관심 없던 분야의 무료 특강·행사 하나 찾아 저장해두기.",
+  "친구 한 명에게 ‘이번 학기에 해보고 싶은 거 있어?’ 물어보기.",
+  "학교 밖 청년센터·공공기관 프로그램 하나 찾아보기.",
+  "혼자 카페·전시·도서관 중 한 곳을 골라 1시간 보내보기.",
+  "AI에게 ‘내가 평소 안 할 것 같은 작은 도전 10개’를 추천받고 하나 고르기.",
+  "평소 안 보는 유튜브·팟캐스트 분야 하나를 20분만 들어보기.",
+  "축제·행사·봉사 모집 공고 하나를 친구에게 공유해보기.",
+  "이번 주 처음 만나는 사람에게 먼저 인사 한 번 해보기."
+];
+
+let idx=0, scores={H:0,Y:0,L:0,F:0}, userName="", resultKey="";
+
+function byId(id){ return document.getElementById(id); }
+function show(id){
+  ["start","quiz","nameStep","result"].forEach(x=>byId(x).classList.add("hidden"));
+  byId(id).classList.remove("hidden");
+  window.scrollTo(0,0);
+}
+function startTest(){
+  idx=0; scores={H:0,Y:0,L:0,F:0};
+  show("quiz"); renderQuestion();
+}
+function renderQuestion(){
+  const item=questions[idx];
+  byId("qno").textContent="Q"+(idx+1)+" / "+questions.length;
+  byId("bar").style.width=((idx/questions.length)*100)+"%";
+  byId("question").textContent=item.q;
+  const box=byId("choices"); box.innerHTML="";
+  item.a.forEach((opt,i)=>{
+    const b=document.createElement("button");
+    b.type="button";
+    b.className="choice";
+    b.innerHTML='<span class="letter">'+String.fromCharCode(65+i)+'</span>'+opt[0];
+    b.addEventListener("click", function(){ answer(opt[1]); }, {passive:true});
+    box.appendChild(b);
+  });
+}
+function answer(code){
+  scores[code]++; idx++;
+  if(idx>=questions.length){
+    show("nameStep");
+  }else{
+    renderQuestion();
+  }
+}
+function pickResult(){
+  const order=["H","Y","L","F"];
+  const arr=Object.entries(scores).sort((a,b)=>b[1]-a[1]);
+  const max=arr[0][1], min=arr[3][1];
+  if(max-min<=1) return "BAL";
+  if(arr[0][1]-arr[1][1]>=3) return arr[0][0];
+  return [arr[0][0],arr[1][0]].sort((a,b)=>order.indexOf(a)-order.indexOf(b)).join("");
+}
+function showResult(){
+  userName=byId("nameInput").value.trim() || "나";
+  resultKey=pickResult();
+  const d=typeData[resultKey];
+  byId("ownerLine").textContent=userName+"님의 화양연화";
+  byId("typeName").textContent=d.name;
+  byId("typeDesc").textContent=d.desc;
+  byId("recoList").innerHTML=d.reco.map(x=>"<li>"+x+"</li>").join("");
+  byId("scoreGrid").innerHTML=["H","Y","L","F"].map(k=>{
+    const p=Math.round(scores[k]/questions.length*100);
+    const sub=k==="H"?"사람":k==="Y"?"탐색":k==="L"?"연결":"도전";
+    return '<div class="scorebox"><b>'+labels[k]+" "+p+'%</b><span>'+sub+"</span></div>";
+  }).join("");
+  byId("missionBox").classList.add("hidden");
+  show("result");
+}
+function drawMission(){
+  const m=missions[Math.floor(Math.random()*missions.length)];
+  byId("missionText").textContent=m;
+  byId("missionBox").classList.remove("hidden");
+}
+function restart(){
+  byId("nameInput").value="";
+  show("start");
+}
+
+function init(){
+  byId("startBtn").addEventListener("click", startTest);
+  byId("resultBtn").addEventListener("click", showResult);
+  byId("missionBtn").addEventListener("click", drawMission);
+  byId("restartBtn").addEventListener("click", restart);
+}
+
+if(document.readyState==="loading"){
+  document.addEventListener("DOMContentLoaded", init);
+}else{
+  init();
+}
+})();
+</script>
+</body>
+</html>
